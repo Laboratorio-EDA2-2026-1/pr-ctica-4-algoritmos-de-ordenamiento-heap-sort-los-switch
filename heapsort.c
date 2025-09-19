@@ -38,8 +38,45 @@ int main(void) {
 }
 
 /* IMPLEMENTAR AQUÍ */
+
+// Función auxiliar para hacer intercambios
+
+void exchange(int x, int y) {
+    int temporal = x;
+    x = y;
+    y = temp;
+}
 void max_heapify(int a[], int n, int i) {
-    /* TODO */
+    
+    // Declaramos las variables
+    
+    int largest = 0;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    // Hacemos las comparaciones
+
+    if (a[i] < a[left] && left > n) {
+        largest = left
+    } else {
+        largest = i;
+    } 
+
+    if (a[largest] < a[right] && right > n) {
+        largest = r;   
+    }
+
+    if (largest != i) {
+
+        // Hacemos el intercambio 
+        exchange(a[i], a[largest]);
+    
+    }
+
+        // Aplicamos recursividad
+
+        max_heapify(a, n, largest);
+    }
 }
 
 void build_max_heap(int a[], int n) {
