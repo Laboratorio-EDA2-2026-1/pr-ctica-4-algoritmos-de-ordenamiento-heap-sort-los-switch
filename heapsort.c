@@ -30,8 +30,7 @@ int main(void) {
         if (i) putchar(' ');
         printf("%d", a[i]);
     }
-    putchar('
-');
+    putchar(' ');
 
     free(a);
     return 0;
@@ -41,11 +40,12 @@ int main(void) {
 
 // Función auxiliar para hacer intercambios
 
-void exchange(int x, int y) {
-    int temporal = x;
-    x = y;
-    y = temp;
+void exchange(int *x, int *y) {
+    int temporal = *x;
+    *x = *y;
+    *y = temporal;
 }
+
 void max_heapify(int a[], int n, int i) {
     
     // Declaramos las variables
@@ -56,34 +56,35 @@ void max_heapify(int a[], int n, int i) {
 
     // Hacemos las comparaciones
 
-    if (a[i] < a[left] && left > n) {
-        largest = left
+    if (a[i] < a[left] && left < n) {
+        largest = left;
     } else {
         largest = i;
     } 
 
-    if (a[largest] < a[right] && right > n) {
-        largest = r;   
+    if (a[largest] < a[right] && right < n) {
+        largest = right;   
     }
 
     if (largest != i) {
 
-        // Hacemos el intercambio 
-        exchange(a[i], a[largest]);
-    
-    }
-
-        // Aplicamos recursividad
-
+        // Hacemos el intercambio y heapificamos
+        exchange(&a[i], &a[largest]);
         max_heapify(a, n, largest);
     }
+
 }
 
 void build_max_heap(int a[], int n) {
-        for (int i = n/2 -1; i >= 0;i--){
-        max_heapify(a, n, i );
+    for (int i = n/2 - 1; i >= 0; i--) {
+        max_heapify(a, n, i);        
+    }
 }
 
 void heap_sort(int a[], int n) {
-    /* TODO */
+    build_max_heap(a, n);
+    for (int i = n - 1; i >= 0; i--) {
+        exchange(&a[0], &a[i]);
+        max_heapify(a, i, 0);
+    }
 }
