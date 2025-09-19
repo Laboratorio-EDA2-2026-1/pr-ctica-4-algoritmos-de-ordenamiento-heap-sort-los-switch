@@ -80,7 +80,8 @@ void max_heapify(int a[], int n, int i) {
 }
 
 void build_max_heap(int a[], int n) {
-    /* TODO */
+        for (int i = n/2 -1; i<=0;--i){
+        max_heapify(a, n, i );
 }
 
 void heap_sort(int a[], int n) {
